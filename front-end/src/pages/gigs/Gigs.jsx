@@ -3,22 +3,20 @@ import './Gigs.scss'
 import Card from '../../components/Card';
 import newRequest from '../../utils/newReq';
 import {useQuery} from '@tanstack/react-query'
-import { useLocation } from 'react-router-dom';
 const Gigs = () => {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState('sales');
-
   const reSort = (type) =>{
     setSort(type);
     setOpen(false)
 
   }
-  const {search} = useLocation();
+  
 
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, error, data,  } = useQuery({
     queryKey: ['repoData'],
     queryFn: () =>
-    newRequest.get('/gigs').then(res=>{
+    newRequest.get( `/gigs`).then(res=>{
       return res.data
     })
   })
@@ -52,7 +50,7 @@ const Gigs = () => {
         </div>
         <div className="cards">
           {isLoading ? "Loading" : error ? "Something went wrong" : data.map(gig=>(
-            <Card key={gig.id} item={gig} />
+            <Card key={gig._id} item={gig} />
           ))}
         </div>
       </div>
