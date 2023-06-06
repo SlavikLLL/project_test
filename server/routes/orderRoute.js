@@ -1,5 +1,5 @@
 import express from 'express';
-import { createOrder, getOrders } from '../controllers/orderController.js';
+import { getOrders,intent } from '../controllers/orderController.js';
 import { verifyToken } from '../middleware/jwt.js';
 
 
@@ -7,7 +7,8 @@ import { verifyToken } from '../middleware/jwt.js';
 const router = express.Router();
 
 
-router.post('/test',verifyToken,createOrder);
-router.get('/test',verifyToken, getOrders);
+//router.post('/',verifyToken,createOrder);
+router.get('/',verifyToken, getOrders);
+router.post('/create-payment-intent',verifyToken,intent )
 
 export default router;

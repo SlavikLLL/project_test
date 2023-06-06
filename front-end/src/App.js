@@ -22,6 +22,8 @@ import Messages from './pages/messages/Messages';
 import Add from './pages/home/add/Add';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import Pay from './pages/pay/Pay';
+import Success from './pages/success/Success';
 
 const queryClient = new QueryClient()
 
@@ -85,6 +87,14 @@ const router = createBrowserRouter([
       {
         path: '/messages',
         element: <Messages />
+      },
+      {
+        path: '/pay/:id',
+        element: <Pay />
+      },
+      {
+        path: '/success',
+        element: <Success />
       },
       
 
